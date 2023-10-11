@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import ListEmployee from "./components/EmployeeList";
+import CreateEmployee from "./components/CreateEmployee";
+import EmployeeTable from "./components/EmployeeTable";
+import Error from "./components/Error";
+import React, {useState, useEffect} from "react";
+
 
 function App() {
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(() => {
+    // Chargez les données des employés depuis localStorage ou une API
+    const employeesData = JSON.parse(localStorage.getItem('employees')) || [];
+    setEmployees(employeesData);
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<CreateEmployee />} />
+          <Route path="/list-employee" element={<EmployeeTable employees={employees}/> } />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
