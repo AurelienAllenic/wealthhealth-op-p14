@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom'
 
 const EmployeeTable = ({ employees }) => {
   const [pageSize, setPageSize] = useState(10);
@@ -143,7 +144,7 @@ const EmployeeTable = ({ employees }) => {
           </button>
         </div>
       </div>
-      <a href="/" className='link'>Home</a>
+      <Link to="/" className='link'>Home</Link>
     </div>
   );
   

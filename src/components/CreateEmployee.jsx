@@ -4,6 +4,9 @@ import { states } from '../states';
 import {AiOutlineClose} from 'react-icons/ai'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import {saveEmployeeAction} from '../features/employeeReducer';
+import {useDispatch} from 'react-redux'
+import { Link } from "react-router-dom";
 
 
 const CreateEmployee = () => {
@@ -30,41 +33,35 @@ const CreateEmployee = () => {
     setEmployee({ ...employee, [name]: value });
   };
 
+  const dispatch = useDispatch();
+
   function saveEmployee() {
-    const firstName = document.getElementById('first-name');
-    const lastName = document.getElementById('last-name');
-    const dateOfBirth = document.getElementById('date-of-birth');
-    const startDate = document.getElementById('start-date');
-    const department = document.getElementById('department');
-    const street = document.getElementById('street');
-    const city = document.getElementById('city');
-    const state = document.getElementById('state');
-    const zipCode = document.getElementById('zip-code');
-  
-    const employees = JSON.parse(localStorage.getItem('employees')) || [];
-    const employee = {
-      firstName: firstName.value,
-      lastName: lastName.value,
-      dateOfBirth: dateOfBirth.value,
-      startDate: startDate.value,
-      department: department.value,
-      street: street.value,
-      city: city.value,
-      state: state.value,
-      zipCode: zipCode.value,
+    // Récupérez les données de l'employé à partir de l'état local
+    const employeeData = {
+      firstName: employee.firstName,
+      lastName: employee.lastName,
+      dateOfBirth: dateOfBirth.toISOString(),
+      startDate: startDate.toISOString(),
+      department: employee.department,
+      street: employee.street,
+      city: employee.city,
+      state: employee.state,
+      zipCode: employee.zipCode,
     };
-    employees.push(employee);
-    localStorage.setItem('employees', JSON.stringify(employees));
+  
+    // Dispatchez l'action pour enregistrer l'employé dans le tableau users
+    dispatch({ type: 'SAVE_EMPLOYEE', payload: employeeData });
   
     // Add any logic here to show confirmation in your React component
     setConfirmationVisible(true);
-    
   }
+
+  
 
   function closeConfirmation() {
     // Cette fonction sera appelée lorsque vous cliquez sur la croix pour fermer la modal de confirmation
     setConfirmationVisible(false);
-    window.location.reload()
+    //window.location.reload()
   }
 
   return (
@@ -74,7 +71,7 @@ const CreateEmployee = () => {
         <h1>HRnet</h1>
       </div>
       <div className="container">
-        <a href="/list-employee">View Current Employees</a>
+        <Link to="/list-employee">View Current Employees</Link>
         <h2>Create Employee</h2>
         <form action="#" id="create-employee">
           <label htmlFor="first-name">First Name</label>
