@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import ListEmployee from "./components/EmployeeList";
 import CreateEmployee from "./components/CreateEmployee";
-import EmployeeTable from "./components/EmployeeTable";
+import EmployeeTable from "./components/package-tables-react/EmployeeTable";
 import Error from "./components/Error";
 import React, {useState, useEffect} from "react";
 import { useSelector } from 'react-redux';
