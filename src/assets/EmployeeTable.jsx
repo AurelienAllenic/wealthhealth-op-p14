@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom'
-import './EmployeeTable.css';
+import './employeeTable.css';
 
 const EmployeeTable = ({ employees }) => {
   const [pageSize, setPageSize] = useState(10);
