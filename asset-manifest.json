@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/wealthhealth-op-p14/static/css/main.4b647f85.css",
+    "main.js": "/wealthhealth-op-p14/static/js/main.b1553f41.js",
+    "index.html": "/wealthhealth-op-p14/index.html",
+    "main.4b647f85.css.map": "/wealthhealth-op-p14/static/css/main.4b647f85.css.map",
+    "main.b1553f41.js.map": "/wealthhealth-op-p14/static/js/main.b1553f41.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4b647f85.css",
+    "static/js/main.b1553f41.js"
+  ]
+}
