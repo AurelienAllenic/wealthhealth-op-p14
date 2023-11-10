@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation, HashRouter } from "react-router-dom";
 import CreateEmployee from "./components/CreateEmployee";
 
 import Error from "./components/Error";
@@ -12,13 +12,13 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<CreateEmployee />} />
           <Route path="/list-employee" element={<EmployeeTable employees={users} />} />
           <Route path="*" element={<Error />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }
